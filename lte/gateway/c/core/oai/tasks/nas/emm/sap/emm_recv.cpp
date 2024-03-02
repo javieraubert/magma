@@ -146,7 +146,7 @@ status_code_e emm_recv_status(mme_ue_s1ap_id_t ue_id, emm_status_msg* msg,
 int check_plmn_restriction(imsi_t imsi) {
   OAILOG_FUNC_IN(LOG_NAS_EMM);
   for (uint8_t itr = 0; itr < mme_config.restricted_plmn.num; itr++) {
-    if ((imsi.u.num.digit1 ==
+    if ((MME_CONFIG_STRING_RESTRICTED_PLMN_LIST_BOOL==1)^((imsi.u.num.digit1 ==
          mme_config.restricted_plmn.plmn[itr].mcc_digit1) &&
         (imsi.u.num.digit2 ==
          mme_config.restricted_plmn.plmn[itr].mcc_digit2) &&
@@ -155,7 +155,7 @@ int check_plmn_restriction(imsi_t imsi) {
         (imsi.u.num.digit4 ==
          mme_config.restricted_plmn.plmn[itr].mnc_digit1) &&
         (imsi.u.num.digit5 ==
-         mme_config.restricted_plmn.plmn[itr].mnc_digit2)) {
+         mme_config.restricted_plmn.plmn[itr].mnc_digit2))) {
       /* MNC could be 2 or 3 digits. But for a given MCC,
        * all the MNCs are of same length. Check MNC digit3
        * only if mnc_digit3 in mme_config is not set to 0xf

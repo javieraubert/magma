@@ -69,6 +69,7 @@ extern "C" {
 #define CIDR_SPLIT_LIST_COUNT 2
 #define MAX_APN_CORRECTION_MAP_LIST 10
 #define MAX_RESTRICTED_PLMN 10
+#define MAX_ALLOWED_PLMN 10
 #define MAX_LEN_TAC 8
 #define MAX_LEN_SNR 6
 #define MAX_LEN_IMEI 15
@@ -146,7 +147,10 @@ extern "C" {
 #define MME_CONFIG_STRING_MNC "MNC"
 #define MME_CONFIG_STRING_TAC "TAC"
 
+#define MME_CONFIG_STRING_RESTRICTED_PLMN_LIST_BOOL \
+  "MME_CONFIG_STRING_RESTRICTED_PLMN_LIST_BOOL"
 #define MME_CONFIG_STRING_RESTRICTED_PLMN_LIST "RESTRICTED_PLMN_LIST"
+#define MME_CONFIG_STRING_ALLOWED_PLMN_LIST "ALLOWED_PLMN_LIST"
 #define MME_CONFIG_STRING_BLOCKED_IMEI_LIST "BLOCKED_IMEI_LIST"
 #define MME_CONFIG_STRING_IMEI_TAC "IMEI_TAC"
 #define MME_CONFIG_STRING_SNR "SNR"
@@ -361,6 +365,11 @@ typedef struct restricted_plmn_s {
   plmn_t plmn[MAX_RESTRICTED_PLMN];
 } restricted_plmn_config_t;
 
+typedef struct allowed_plmn_s {
+  int num;
+  plmn_t plmn[MAX_ALLOWED_PLMN];
+} allowed_plmn_config_t;
+
 typedef struct blocked_imei_list_s {
   int num;
   // data is NULL
@@ -401,6 +410,7 @@ typedef struct mme_config_s {
 
   uint32_t max_enbs;
   uint32_t max_ues;
+  uint32_t MME_CONFIG_STRING_RESTRICTED_PLMN_LIST_BOOL;
 
   uint8_t relative_capacity;
 
