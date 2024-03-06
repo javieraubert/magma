@@ -106,7 +106,7 @@ MME :
     # By default this list is empty
     # Max number of restricted plmn is 10
     #MME_CONFIG_STRING_RESTRICTED_PLMN_LIST_BOOL 0 IF RESTRICTED, 1 IF ALLOWED
-    MME_CONFIG_STRING_RESTRICTED_PLMN_LIST_BOOL = 0
+    MME_CONFIG_STRING_RESTRICTED_PLMN_LIST_BOOL = 0;
     RESTRICTED_PLMN_LIST = (
         # PlmnConfig values can be found at magma/lte/protos/mconfig/mconfigs.proto
         {% for plmn_config in restrictedPlmns -%}

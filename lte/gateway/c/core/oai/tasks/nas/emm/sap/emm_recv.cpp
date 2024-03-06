@@ -146,7 +146,7 @@ status_code_e emm_recv_status(mme_ue_s1ap_id_t ue_id, emm_status_msg* msg,
 int check_plmn_restriction(imsi_t imsi) {
   OAILOG_FUNC_IN(LOG_NAS_EMM);
   for (uint8_t itr = 0; itr < mme_config.restricted_plmn.num; itr++) {
-    if ((MME_CONFIG_STRING_RESTRICTED_PLMN_LIST_BOOL==1)^((imsi.u.num.digit1 ==
+    if ((MME_CONFIG_STRING_RESTRICTED_PLMN_LIST_BOOL==1)!= ((imsi.u.num.digit1 ==
          mme_config.restricted_plmn.plmn[itr].mcc_digit1) &&
         (imsi.u.num.digit2 ==
          mme_config.restricted_plmn.plmn[itr].mcc_digit2) &&
